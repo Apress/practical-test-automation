@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.5.0/jasmine.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.5.0/jasmine-html.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.5.0/boot.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.5.0/jasmine.min.css">
+
+    <script type="text/javascript">
+        // code to be added here
+    </script>
+
+    <script type="text/javascript">
+        describe("orderHandler.handleOrder", function(){
+            beforeEach(function(){
+                spyOn(orderHandler, 'sendEmail').and.callThrough();
+            });
+
+            it("calls sendEmail", function() {
+                orderHandler.handleOrder();
+
+                expect(orderHandler.sendEmail).toHaveBeenCalled();
+            });
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.5.0/jasmine.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.5.0/jasmine-html.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.5.0/boot.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.5.0/jasmine.min.css">
+
+    <script type="text/javascript">
+        var movie = {
+            age: 5,
+            ageRange: function(){
+                console.log("ageRange called");
+            },
+            isAllowedToWatchMovie: function() {
+                if (this.ageRange(this.age) === "underage") {
+                    return false;
+                }
+                else if (this.ageRange(this.age) === "adult") {
+                    return true;
+                }
+            }
+        };
+    </script>
+
+    <script type="text/javascript">
+        describe("movie", function() {
+            describe("isAllowedToWatchMovie", function() {
+                describe("when ageRange returns 'underage'", function() {
+                    beforeEach(function(){
+                        spyOn(movie, 'ageRange').and.returnValue('underage');
+                    });
+
+                    it("returns false", function() {
+                        expect(movie.isAllowedToWatchMovie()).toEqual(false);
+                    });
+                });
+
+                describe("when ageRange returns 'adult'", function() {
+                    beforeEach(function(){
+                        spyOn(movie, 'ageRange').and.returnValue('adult');
+                    });
+
+                    it("returns true", function() {
+                        expect(movie.isAllowedToWatchMovie()).toEqual(true);
+                    });
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

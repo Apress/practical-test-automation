@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.5.0/jasmine.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.5.0/jasmine-html.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.5.0/boot.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.5.0/jasmine.min.css"></head>
+
+<script type="text/javascript">
+    function maximumOfThree(a, b, c) {
+        if (a > b ) {
+            if (a > c) {
+                return a;
+            }
+            else {
+                return c;
+            }
+        }
+        else if (b > c) {
+            return b;
+        }
+        else {
+            return c;
+        }
+    }
+</script>
+
+<script type="text/javascript">
+    describe("Testing 'maximumOfThree'", function() {
+        describe("when a is greater than b", function() {
+            beforeEach(function() {
+                this.a = 5;
+                this.b = 4;
+            });
+
+            describe("when a is greater than c", function() {
+
+                beforeEach(function() {
+                    this.c = 3;
+                });
+
+                it("returns a", function() {
+                    expect(maximumOfThree(this.a, this.b, this.c)).toEqual(this.a);
+                });
+            });
+
+            describe("when a is less than or equal to c", function(){
+                beforeEach(function() {
+                    this.c = 6;
+                });
+
+                it("returns c", function() {
+                    expect(maximumOfThree(this.a, this.b, this.c)).toEqual(this.c);
+                });
+
+            });
+        });
+
+        describe("when a is less than b", function() {
+            beforeEach(function() {
+                this.a = 5;
+                this.b = 6;
+            });
+
+            describe("when b is greater than c", function() {
+                beforeEach(function() {
+                    this.c = 5;
+                });
+
+                it("returns b", function() {
+                    expect(maximumOfThree(this.a, this.b, this.c)).toEqual(this.b);
+                });
+            });
+
+            describe("when b is less than c", function() {
+                beforeEach(function() {
+                    this.c = 7;
+                });
+
+                it("returns c", function() {
+                    expect(maximumOfThree(this.a, this.b, this.c)).toEqual(this.c);
+                });
+            });
+
+        });
+    });
+</script>
+<body>
+
+</body>
+</html>
